@@ -273,8 +273,8 @@
   type = Transient
 
   num_steps = 100
-  dt = 86400
-  dtmin = 3600
+  dt = 864000
+  dtmin = 86400
   petsc_options_iname = '-pc_type -pc_asm_overlap -sub_pc_type -sub_pc_factor_levels'
   petsc_options_value = 'asm      2               ilu          4'
   line_search = 'none'

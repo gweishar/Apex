@@ -20,7 +20,7 @@ InputParameters validParams<DarcyConvection>()
   InputParameters params = validParams<Kernel>();
 
   params.addRequiredCoupledVar("darcy_pressure", "The variable representing the pressure.");
-
+  params.addRequiredParam<RealVectorValue>("gravity", "Direction of the gravity vector");
   return params;
 }
 
@@ -33,6 +33,9 @@ DarcyConvection::DarcyConvection(const InputParameters & parameters) :
     // Save off the coupled variable identifier for use in
     // computeQpOffDiagJacobian
     _pressure_var(coupled("darcy_pressure")),
+
+    // Get the gravity as a global variable
+    _gravity(getParam<RealVectorValue>("gravity")),
 
     // Grab necessary material properties
     _permeability(getMaterialProperty<Real>("permeability")),
@@ -54,7 +57,7 @@ DarcyConvection::computeQpResidual()
 
   // http://en.wikipedia.org/wiki/Superficial_velocity
   RealVectorValue superficial_velocity =
-    _porosity[_qp] * -(_permeability[_qp]/_viscosity[_qp]) * _pressure_gradient[_qp];
+    _porosity[_qp] * -(_permeability[_qp] / _viscosity[_qp]) * (_pressure_gradient[_qp] - _density[_qp] * _gravity);
 
   return _heat_capacity[_qp] * superficial_velocity * _grad_u[_qp] * _test[_i][_qp];
 }
@@ -63,7 +66,7 @@ Real
 DarcyConvection::computeQpJacobian()
 {
   RealVectorValue superficial_velocity =
-    _porosity[_qp] * -(_permeability[_qp]/_viscosity[_qp]) * _pressure_gradient[_qp];
+    _porosity[_qp] * -(_permeability[_qp] / _viscosity[_qp]) * ( _pressure_gradient[_qp] - _density[_qp] * _gravity);
 
   return _heat_capacity[_qp] * superficial_velocity * _grad_phi[_j][_qp] * _test[_i][_qp];
 }
@@ -74,7 +77,7 @@ DarcyConvection::computeQpOffDiagJacobian(unsigned int jvar)
   if (jvar == _pressure_var)
   {
     RealVectorValue superficial_velocity =
-      _porosity[_qp] * -(_permeability[_qp]/_viscosity[_qp]) * _grad_phi[_j][_qp];
+      _porosity[_qp] * -(_permeability[_qp] / _viscosity[_qp]) * ( _grad_phi[_j][_qp] - _density[_qp] * _gravity);
     return _heat_capacity[_qp] * superficial_velocity * _grad_u[_qp] * _test[_i][_qp];
   }
 

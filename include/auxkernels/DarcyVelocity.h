@@ -44,12 +44,13 @@ protected:
 
   /// Will hold 0, 1, or 2 corresponding to x, y, or z.
   int _component;
- 
+
   /// The gradient of a coupled variable
   const VariableGradient & _pressure_gradient;
-
-  /// Holds the permeability and viscosity from the material system
+  const RealVectorValue & _gravity;
+  /// Holds the permeability, density and viscosity from the material system
   const MaterialProperty<Real> & _permeability;
+  const MaterialProperty<Real> & _density;
   const MaterialProperty<Real> & _viscosity;
 
 

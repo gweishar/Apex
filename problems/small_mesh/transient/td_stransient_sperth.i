@@ -43,13 +43,13 @@
     type = GenericConstantMaterial
     block = 0
     prop_names = 'thermal_conductivity specific_heat density'
-    prop_values = '3.2 980 2700' # K: (W/m*K), J/Kg-K, kg/m3  
+    prop_values = '3.2 980 2700' # K: (W/m*K), J/Kg-K, kg/m3
   [../]
   [./cattamarra_Coal_Measures]
     type = GenericConstantMaterial
     block = 1
     prop_names = 'thermal_conductivity specific_heat density'
-    prop_values = '3.73 1000 2360' # W/m*K, J/kg-K, kg/m^3 
+    prop_values = '3.73 1000 2360' # W/m*K, J/kg-K, kg/m^3
   [../]
   [./defaultCover]
     type = GenericConstantMaterial
@@ -61,25 +61,25 @@
     type = GenericConstantMaterial
     block = 3
     prop_names = 'thermal_conductivity specific_heat density'
-    prop_values = '2.62 775 2520' # W/m*K, J/kg-K, kg/m^3 
+    prop_values = '2.62 775 2520' # W/m*K, J/kg-K, kg/m^3
   [../]
   [./kockatea_Shale]
     type = GenericConstantMaterial
     block = 4
     prop_names = 'thermal_conductivity specific_heat density'
-    prop_values = '2.09 900 2650' # W/m*K, J/kg-K, kg/m^3 
+    prop_values = '2.09 900 2650' # W/m*K, J/kg-K, kg/m^3
   [../]
   [./late_Permian]
     type = GenericConstantMaterial
     block = 5
     prop_names = 'thermal_conductivity specific_heat density'
-    prop_values = '3 900 2650' # W/m*K, J/kg-K, kg/m^3 
+    prop_values = '3 900 2650' # W/m*K, J/kg-K, kg/m^3
   [../]
   [./lesueur_Ss]
     type = GenericConstantMaterial
     block = 6
     prop_names = 'thermal_conductivity specific_heat density'
-    prop_values = '3.56 775 2650' # W/m*K, J/kg-K, kg/m^3 
+    prop_values = '3.56 775 2650' # W/m*K, J/kg-K, kg/m^3
   [../]
   #[./neocomian_Unc]
   #  type = GenericConstantMaterial
@@ -109,7 +109,7 @@
   #  type = GenericConstantMaterial
   #  block = 11
   #  prop_names = 'thermal_conductivity specific_heat density'
-  #  prop_values = '3.2 980 2700' # W/m*K, J/kg-K, kg/m^3 
+  #  prop_values = '3.2 980 2700' # W/m*K, J/kg-K, kg/m^3
   #[../]
   [./out]
     type = GenericConstantMaterial
@@ -142,11 +142,11 @@
 [Executioner]
   type = Transient
   scheme = crank-nicolson
-  num_steps = 30
+  num_steps = 10
   solve_type =  PJFNK
   petsc_options_iname = '-pc_type -sub_pc_type'
   petsc_options_value = 'asm lu'
-  dt = 1500
+  dt = 864000 # 24h in seconds
 []
 
 [Outputs]

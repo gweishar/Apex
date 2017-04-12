@@ -27,7 +27,7 @@ InputParameters validParams<DarcyVelocity>()
 
   // Use the MooseEnum to add a parameter called "component"
   params.addRequiredParam<MooseEnum>("component", component, "The desired component of velocity.");
-
+  params.addRequiredParam<RealVectorValue>("gravity", "Direction of the gravity vector");
   // Add a "coupling paramater" to get a variable from the input file.
   params.addRequiredCoupledVar("darcy_pressure", "The pressure field.");
 
@@ -43,9 +43,13 @@ DarcyVelocity::DarcyVelocity(const InputParameters & parameters) :
     // Get the gradient of the variable
     _pressure_gradient(coupledGradient("darcy_pressure")),
 
+    // Get the gravity as a global variable
+    _gravity(getParam<RealVectorValue>("gravity")),
     // Snag permeability from the Material system.
     // Only AuxKernels operating on Elemental Auxiliary Variables can do this
     _permeability(getMaterialProperty<Real>("permeability")),
+
+    _density(getMaterialProperty<Real>("density")),
 
     // Snag viscosity from the Material system.
     // Only AuxKernels operating on Elemental Auxiliary Variables can do this
@@ -60,5 +64,5 @@ DarcyVelocity::computeValue()
   // Then pull out the "component" of it we are looking for (x, y or z)
   // Note that getting a particular component of a gradient is done using the
   // parenthesis operator
-  return -(_permeability[_qp] / _viscosity[_qp]) * _pressure_gradient[_qp](_component);
+  return -(_permeability[_qp] / _viscosity[_qp]) * (_pressure_gradient[_qp](_component) -_density[_qp]*_gravity(_component));
 }

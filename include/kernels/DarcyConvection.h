@@ -47,6 +47,8 @@ protected:
   /// identify a coupled variable
   unsigned int _pressure_var;
 
+  RealVectorValue _gravity;
+
   /// These references will be set by the initialization list so that
   /// values can be pulled from the Material system.
   const MaterialProperty<Real> & _permeability;

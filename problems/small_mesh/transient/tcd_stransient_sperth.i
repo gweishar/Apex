@@ -13,15 +13,12 @@
   zmax = 3000 # 3 km
 []
 
-[MeshModifiers]
-	[./perth_section]
-  		type = AssignElementSubdomainID
-  		subdomain_ids = [magic_key]
-  	[../]
-[]
-
 [Variables]
   [./pressure]
+    [./InitialCondition]
+      type = ConstantIC
+      value = 1e5
+    [../]
   [../]
   [./temperature]
   [../]
@@ -98,25 +95,25 @@
     type = GenericConstantMaterial
     block = 3
     prop_names = 'thermal_conductivity specific_heat density permeability porosity viscosity'
-    prop_values = '2.62 775 2520 1.2e-13 0.06 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2 
+    prop_values = '2.62 775 2520 1.2e-13 0.06 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2
   [../]
   [./kockatea_Shale]
     type = GenericConstantMaterial
     block = 4
     prop_names = 'thermal_conductivity specific_heat density permeability porosity viscosity'
-    prop_values = '2.09 900 2650 1.5e-15 0.12 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2 
+    prop_values = '2.09 900 2650 1.5e-15 0.12 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2
   [../]
   [./late_Permian]
     type = GenericConstantMaterial
     block = 5
     prop_names = 'thermal_conductivity specific_heat density permeability porosity viscosity'
-    prop_values = '3 900 2650 1.2e-14 0.05 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2 
+    prop_values = '3 900 2650 1.2e-14 0.05 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2
   [../]
   [./lesueur_Ss]
     type = GenericConstantMaterial
     block = 6
     prop_names = 'thermal_conductivity specific_heat density permeability porosity viscosity'
-    prop_values = '3.56 775 2650 2e-15 0.09 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2 
+    prop_values = '3.56 775 2650 2e-15 0.09 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2
   [../]
   #[./neocomian_Unc]
   #  type = GenericConstantMaterial
@@ -146,7 +143,7 @@
   #  type = GenericConstantMaterial
   #  block = 11
   #  prop_names = 'thermal_conductivity specific_heat density permeability porosity viscosity'
-  #  prop_values = '3.2 980 2700 1.2e-18 0.01 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2 
+  #  prop_values = '3.2 980 2700 1.2e-18 0.01 0.89' # W/m*K, J/kg-K, kg/m^3, m2, N*s/m^2
   #[../]
   [./out]
     type = GenericConstantMaterial
@@ -186,11 +183,19 @@
 [Executioner]
   type = Transient
   scheme = crank-nicolson
-  num_steps = 50
+  num_steps = 10
   solve_type =  PJFNK
   petsc_options_iname = '-pc_type -sub_pc_type'
   petsc_options_value = 'asm lu'
-  dt = 1500
+  dt = 864000
+  dtmin = 86400
+[]
+
+[MeshModifiers]
+	[./perth_section]
+  		type = AssignElementSubdomainID
+  		subdomain_ids = [magic_key]
+  	[../]
 []
 
 [Outputs]

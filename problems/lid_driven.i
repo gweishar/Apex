@@ -1,5 +1,5 @@
 [GlobalParams]
-  gravity = '0 0 -9.8'
+  gravity = '0 0 9.8'
   rho = 1
   mu = 1
   cp = 1
@@ -15,10 +15,11 @@
   ymax = 1.0
   zmin=0
   zmax = 1
-  nx = 16
-  ny = 16
-  nz = 16
+  nx = 10
+  ny = 10
+  nz = 10
   second_order = true
+  elem_type = HEX8
 []
 
 [MeshModifiers]
@@ -156,6 +157,13 @@
   [./y_no_slip]
     type = DirichletBC
     variable = vel_y
+    boundary = 'bottom right top left front back'
+    value = 0.0
+  [../]
+
+  [./z_no_slip]
+    type = DirichletBC
+    variable = vel_z
     boundary = 'bottom right top left front back'
     value = 0.0
   [../]

@@ -9,9 +9,10 @@
 
 // Kernels
 #include "DarcyPressure.h"
+#include "ApexConvection.h"
 #include "DarcyConvection.h"
-#include "BodyForce.h"
-#include "ApexMixedFormulation.h"
+#include "ApexHeatConduction.h"
+#include "ApexMomentum.h"
 
 //Aux Kernels
 #include "DarcyVelocity.h"
@@ -56,9 +57,10 @@ void
 ApexApp::registerObjects(Factory & factory)
 {
 	registerKernel(DarcyPressure);
+  registerKernel(ApexConvection);
   registerKernel(DarcyConvection);
-  registerKernel(BodyForce);
-  registerKernel(ApexMixedFormulation);
+  registerKernel(ApexMomentum);
+  registerKernel(ApexHeatConduction);
   registerBoundaryCondition(HeatConductionOutflow);
   registerAux(DarcyVelocity);
   registerAux(EntropyProduction);
