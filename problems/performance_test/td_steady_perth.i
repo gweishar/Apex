@@ -23,7 +23,7 @@
     type = ParsedFunction
     value = 298.15+grad*y
     vars = 'grad'
-    vals = 2.49875e-8 # corresponds to 10 degrees difference over the whole distance in y direction i.e 10/690km
+    vals = 1.4449275362e-8 # corresponds to 10 degrees difference over the whole distance in y direction i.e 10/690km
   [../]
 []
 
