@@ -23,7 +23,7 @@
     type = ParsedFunction
     value = 298.15+grad*y
     vars = 'grad'
-    vals = [grad_value] # linear gradient calculated in the python script
+    vals = 1.45e-5 # corresponds to 10 degrees difference over the whole distance in y direction i.e 10/690km
   [../]
 []
 
