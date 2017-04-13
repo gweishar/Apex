@@ -6,8 +6,6 @@
   nx = 28
   ny = 80
   nz = 28
-  #block_id = '0 1 2 3 4 5 6 7 8 9 10 11 12'
-  #block_name = 'Basement Cattamarra_Coal_Measures DefaultCover Eneabba_Fm Kockatea_Shale Late_Permian Lesueur_Ss Neocomian_Unc Topo_and_bathy Woodada_Fm Yarragadee_Fm Yigarn out'
   xmax = 156 # 100 km
   ymax = 690 # 50 km
   zmax = 16 # 8 km
