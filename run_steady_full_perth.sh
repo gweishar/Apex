@@ -29,4 +29,4 @@
 #BSUB -n 24
 
 cd $HOME/projects/Apex
-mpirun -n 24 ./Apex-opt -i problems/golden_input/d_steady_bperth.i
+mpirun -n 24 ./Apex-opt -i problems/golden_input/d_steady_full_perth.i
