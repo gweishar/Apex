@@ -6,9 +6,12 @@
   nx = [nx]
   ny = [ny]
   nz = [nz]
+  xmin=0
+  ymin=0
+  zmin=0
   xmax = 156000 # 100 km
   ymax = 690000 # 50 km
-  zmax = 16000 # 8 km
+  zmax = 80000 # 8 km
 []
 
 [Variables]
@@ -23,7 +26,8 @@
     type = ParsedFunction
     value = 298.15+grad*y
     vars = 'grad'
-    vals = 1.4449275362e-8 # corresponds to 10 degrees difference over the whole distance in y direction i.e 10/690km
+    #vals = 1e-3
+    vals=1.4449275362e-5 # corresponds to 10 degrees difference over the whole distance in y direction i.e 10/690km
   [../]
 []
 
@@ -36,6 +40,7 @@
 
 
 [Materials]
+  #active = 'basement'
 # note: all thermal conductivity values with water satured at 30ºC
   [./basement]
     type = GenericConstantMaterial
@@ -122,7 +127,8 @@
     type = NeumannBC
     variable = temperature
     boundary = back
-    value = 0.03
+    value = 0.003
+    #value = 2.787068e-13
   [../]
   [./basin_top_temp]
     type = FunctionDirichletBC
@@ -139,8 +145,8 @@
 
 [Outputs]
   exodus = true
-  print_perf_log = true
-  file_base = d_steady_full_perth_out
+  #print_perf_log = true
+  #file_base = d_steady_full_perth_out
 []
 
 [MeshModifiers]
