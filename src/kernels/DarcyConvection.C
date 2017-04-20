@@ -56,6 +56,7 @@ DarcyConvection::computeQpResidual()
   // http://srimcs.im.pcz.pl/2012_1/art_07.pdf
 
   // http://en.wikipedia.org/wiki/Superficial_velocity
+
   RealVectorValue superficial_velocity =
     _porosity[_qp] * -(_permeability[_qp] / _viscosity[_qp]) * (_pressure_gradient[_qp] - _density[_qp] * _gravity);
 

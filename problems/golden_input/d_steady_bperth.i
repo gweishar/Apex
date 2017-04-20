@@ -1,5 +1,4 @@
 #### STEADY  - PERTH BASIN SECTION ####
-#### Perfomance test input file ####
 [Mesh]
   type = GeneratedMesh
   dim = 3
@@ -9,12 +8,9 @@
   ymin=0
   xmin=0
   zmin=0
-  #zmax=10000
-  #xmax=10000
-  #ymax=10000
   xmax = 156000 # 100 km
   ymax = 690000 # 50 km
-  zmax = 80000 # 16km * 6 (exageratation )
+  zmax = 80000 # 16km * 5 (exageratation )
 []
 
 [Variables]
