@@ -17,7 +17,7 @@
 #BSUB -W 03:00
 
 ### Request memory you need for your job in TOTAL in MB
-#BSUB -M 4048
+#BSUB -M 3548
 
 ### Use esub for Open MPI
 #BSUB -a openmpi
