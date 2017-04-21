@@ -134,7 +134,7 @@
     type = NeumannBC
     variable = temperature
     boundary = back
-    value = 0.003
+    value = 0.03
     #value = 2.787068e-13
   [../]
   [./basin_top_temp_func]
