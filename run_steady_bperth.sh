@@ -17,13 +17,10 @@
 #BSUB -W 00:50
 
 ### Request memory you need for your job in TOTAL in MB
-#BSUB -M 4048
+#BSUB -M 3000
 
 ### Use esub for Open MPI
 #BSUB -a openmpi
-
-### Use a specific machine
-#BSUB -m mpi-l-bull
 
 ### Request number of slots
 #BSUB -n 24
