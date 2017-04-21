@@ -10,7 +10,7 @@
   ymin=0
   zmin=0
   xmax = 156000
-  ymax = 690000 
+  ymax = 690000
   zmax = 16000
 []
 
@@ -123,6 +123,13 @@
 []
 
 [BCs]
+  active = 'basin_top_temp_simple basin_bottom_temp'
+  [./basin_top_temp_simple]
+    type = DirichletBC
+    variable = temperature
+    boundary = front
+    value = 289
+  [../]
   [./basin_bottom_temp]
     type = NeumannBC
     variable = temperature
@@ -130,7 +137,7 @@
     value = 0.003
     #value = 2.787068e-13
   [../]
-  [./basin_top_temp]
+  [./basin_top_temp_func]
     type = FunctionDirichletBC
     variable = temperature
     boundary = front
