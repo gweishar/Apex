@@ -26,7 +26,7 @@
 #BSUB -m mpi-l-bull
 
 ### Request number of slots
-#BSUB -n 34
+#BSUB -n 48
 
 cd $HOME/projects/Apex
-mpirun -n 34 ./Apex-opt -i problems/golden_input/d_steady_refined_perth.i
+mpirun -n 48 ./Apex-opt -i problems/golden_input/d_steady_refined_perth.i
