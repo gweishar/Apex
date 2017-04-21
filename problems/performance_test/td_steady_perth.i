@@ -9,9 +9,9 @@
   xmin=0
   ymin=0
   zmin=0
-  xmax = 156000 # 100 km
-  ymax = 690000 # 50 km
-  zmax = 80000 # 8 km
+  xmax = 156000
+  ymax = 690000 
+  zmax = 16000
 []
 
 [Variables]
