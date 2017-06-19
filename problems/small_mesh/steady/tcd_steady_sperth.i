@@ -49,9 +49,10 @@
   # directly in the input file
   [./bc_func]
     type = ParsedFunction
-    value = 298.15+(10/28)*grad*x
+    value = 298.15+grad*y
     vars = 'grad'
-    vals = '1' # in future transform this to [grad_value] with deltax/nx calculated from the pythong script
+    #vals = 1e-3
+    vals=1.4449275362e-5 # corresponds to 10 degrees difference over the whole distance in y direction i.e 10/690km
   [../]
 []
 

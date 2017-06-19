@@ -8,9 +8,9 @@
   nz = 24
   #block_id = '0 1 2'
   #block_name = 'gneiss steel ice'
-  xmax = 90 # 100 km
-  ymax = 60 # 50 km
-  zmax = 80 # 8 km
+  xmax = 90 # m
+  ymax = 60 # m
+  zmax = 80 # m
 []
 
 [MeshModifiers]
